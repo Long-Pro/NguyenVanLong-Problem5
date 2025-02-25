@@ -1,0 +1,22 @@
+*** select:
+
+// include a and b, exclude other fields
+query.select('a b');
+// Equivalent syntaxes:
+query.select(['a', 'b']);
+query.select({ a: 1, b: 1 });
+// exclude c and d, include other fields
+query.select('-c -d');
+--------
+*** sort: 
+
+// sort by "field" ascending and "test" descending
+query.sort({ field: 'asc', test: -1 });
+
+// equivalent
+query.sort('field -test');
+
+// also possible is to use a array with array key-value pairs
+query.sort([['field', 'asc']]);
+---------
+
