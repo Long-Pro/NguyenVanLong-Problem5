@@ -30,10 +30,12 @@ export class ProductService {
   }
 
   async update(input: TProductUpdate): Promise<Product> {
+    await this.getById(input.id);
     return await this.productRepository.update(input);
   }
 
   async delete(id: string): Promise<void> {
+    await this.getById(id);
     await this.productRepository.delete(id);
   }
 }

@@ -1,15 +1,14 @@
-import express, { NextFunction, Request, Response, Express } from 'express';
-import helmet from 'helmet';
-import morgan from 'morgan';
-import createError from 'http-errors';
-import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import express, { NextFunction, Request, Response } from 'express';
+import helmet from 'helmet';
+import createError from 'http-errors';
+import morgan from 'morgan';
 
 import Joi from 'joi';
-// import router from '../api/routes/index.route'
-import ApiResponse from '../utils/api-response';
-import env from '../configs/env.config';
 import router from '../api/index.route';
+import env from '../configs/env.config';
+import ApiResponse from '../utils/api-response';
 
 export default async function loadExpress() {
   const app = express();
@@ -17,7 +16,6 @@ export default async function loadExpress() {
   app.use(cors({ origin: '*' }));
   app.use(helmet());
   app.use(morgan('dev'));
-  // app.use(compression())
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
